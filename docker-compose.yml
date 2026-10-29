@@ -71,6 +71,7 @@ services:
 
 volumes:
   postgres_data:
+    name: tnis-junior_se_postgres_data
 
 networks:
   frontend:

@@ -133,7 +133,7 @@ Perintah ini digunakan untuk memeriksa user dan grup yang menjalankan proses dal
 
 **Screenshot:**
 
-![User dalam container](screenshots/07- uid-container.png)
+![User dalam container](screenshots/07-uid-container.png)
 
 ### 4.4 Menguji akses WordPress melalui Nginx
 

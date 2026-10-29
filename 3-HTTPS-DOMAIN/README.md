@@ -218,7 +218,7 @@ getent hosts tnis.test
 **Bukti:** Domain `tnis.test` mengarah ke alamat `127.0.0.1`.
 
 **Screenshot:**
- (../screenshots/screenshots/hosts.png)
+ (../screenshots/hosts.png)
  
 ---
 

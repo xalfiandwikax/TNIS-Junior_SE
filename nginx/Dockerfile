@@ -21,12 +21,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Gunakan konfigurasi Nginx milik project
 COPY nginx.conf /etc/nginx/nginx.conf
-
+COPY --chown=10001:10001 certs/ /etc/nginx/certs/
 # Jalankan sebagai user non-root
 USER 10001:10001
 
 # Port internal Nginx
-EXPOSE 8080
+EXPOSE 8080 8443
 
 # Periksa endpoint health
 HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \

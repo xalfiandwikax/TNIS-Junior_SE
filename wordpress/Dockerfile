@@ -54,7 +54,7 @@ RUN cp wp-config-sample.php wp-config.php \
 
 # Set WordPress URL
 RUN sed -i \
-    "/require_once ABSPATH . 'wp-settings.php';/i define('WP_HOME', 'http://localhost:8080');\ndefine('WP_SITEURL', 'http://localhost:8080');\n" \
+    "/require_once ABSPATH . 'wp-settings.php';/i define('WP_HOME', 'https://tnis.test');\\ndefine('WP_SITEURL', 'https://tnis.test');\\nif (isset(\\\$_SERVER['HTTP_X_FORWARDED_PROTO']) \\&\\& \\\$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') { \\\$_SERVER['HTTPS'] = 'on'; }\\n" \
     /var/www/html/wp-config.php
 
 # Apache listens on an unprivileged port

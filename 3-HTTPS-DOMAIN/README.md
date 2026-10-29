@@ -217,7 +217,6 @@ getent hosts tnis.test
 
 **Bukti:** Domain `tnis.test` mengarah ke alamat `127.0.0.1`.
 
-**Screenshot:**
  ![hosts](../screenshots/hosts.png)
  
 ---
@@ -231,8 +230,7 @@ curl -I http://tnis.test
 ```
 **Bukti:** Respons menunjukkan status `301 Moved Permanently` dan header `Location` menuju HTTPS.
 
-**Screenshot:**
-`screenshots/http-tnis.png`
+ ![http](../screenshots/http-tnis.png)
 
 ---
 
@@ -245,9 +243,8 @@ curl -I https://tnis.test
 
 **Bukti:** Server memberikan respons HTTP tanpa error validasi sertifikat. Status yang diharapkan umumnya `200 OK` atau respons sukses lain sesuai halaman yang diakses.
 
-**Screenshot:**
-`screenshots/https-tnis.png`
----
+ ![https](../screenshots/https-tnis.png)
+
 
 ### 9.4 Validasi Sertifikat SSL
 
@@ -264,10 +261,9 @@ openssl s_client \
 Verify return code: 0 (ok)
 ```
 
-**Screenshot:**
-`screenshots/ssl-sert.png`
 
----
+ ![ssl](../screenshots/ssl-sert.png)
+
 
 ### 9.5 Akses Website melalui HTTPS
 
@@ -278,11 +274,11 @@ https://tnis.test
 
 **Bukti:** Website terbuka melalui HTTPS dan browser tidak menampilkan peringatan sertifikat.
 
-**Screenshot:**
 
-`screenshots/ssl-homepage.png`
 
----
+ ![home](../screenshots/ssl-homepage.png)
+
+
 
 ### 9.6 Halaman Login WordPress
 
@@ -293,11 +289,9 @@ https://tnis.test/wp-login.php
 
 **Bukti:** Halaman login WordPress dapat diakses melalui HTTPS.
 
-**Screenshot:**
 
-`screenshots/wp-login.png`
+ ![login](../screenshots/wp-login.png)
 
----
 
 ### 9.7 Dashboard WordPress
 
@@ -308,11 +302,9 @@ https://tnis.test/wp-admin
 
 **Bukti:** Dashboard WordPress dapat diakses setelah login berhasil.
 
-**Screenshot:**
 
-`screenshots/dashboard-ssl.png`
+ ![dashboard](../screenshots/dashboard-ssl.png)
 
----
 
 ### 9.8 Status Container Docker
 
@@ -324,11 +316,9 @@ sudo docker compose ps
 
 **Bukti:** Status container Nginx, WordPress, dan PostgreSQL ditampilkan sesuai kondisi deployment.
 
-**Screenshot:**
 
-`screenshots/docker-ps-ssl.png`
+ ![dockerps](../screenshots/docker-ps-ssl.png)
 
----
 
 ### 9.9 Validasi Konfigurasi Nginx
 
@@ -343,9 +333,8 @@ syntax is ok
 test is successful
 ```
 
-**Screenshot:**
-`screenshots/nginx-t.png`
----
+ ![nginx-t](../screenshots/nginx-t.png)
+
 
 
 ## 10. Kesimpulan

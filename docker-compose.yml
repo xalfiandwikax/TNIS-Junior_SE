@@ -1,0 +1,80 @@
+
+services:
+  postgres:
+    image: tnis-postgres:latest
+    build:
+      context: ./postgres
+    container_name: tnis-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: wordpress
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-p", "5432", "-U", "appuser", "-d", "wordpress"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    security_opt:
+      - no-new-privileges:true
+
+  wordpress:
+    image: tnis-wordpress:latest
+    build:
+      context: ./wordpress
+    container_name: tnis-wordpress
+    restart: unless-stopped
+    environment:
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: wordpress
+      DB_USER: appuser
+      DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - frontend
+      - backend
+    expose:
+      - "8080"
+    security_opt:
+      - no-new-privileges:true
+
+  nginx:
+    image: tnis-nginx:latest
+    build:
+      context: ./nginx
+    container_name: tnis-nginx
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      wordpress:
+        condition: service_started
+    networks:
+      - frontend
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8080/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  postgres_data:
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+    internal: true

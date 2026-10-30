@@ -56,7 +56,6 @@ Berikut rancangan alokasi IP address untuk setiap komponen:
 | Gateway DB | 10.10.30.1 | 10.10.30.0/24 | Gateway subnet Database |
 | PostgreSQL | 10.10.30.10 | 10.10.30.0/24 | Database Server |
 
-**Catatan:** Alokasi IP di atas merupakan rancangan jaringan (proposed design). IP gateway dan IP masing-masing layanan belum dikonfigurasi pada Docker Compose yang sedang berjalan.
 
 ## 5. Penjelasan Subnet
 

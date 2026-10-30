@@ -28,7 +28,11 @@ Topologi jaringan dibagi menjadi tiga subnet:
 
 Diagram topologi jaringan:
 
-![Diagram Topologi Jaringan](screenshots/01-topologi-jaringan.png)
+<p align="center">
+  <img src="screenshots/01-topologi-jaringan.png"
+       alt="Diagram Topologi Jaringan"
+       width="900" />
+</p>
 
 Alur komunikasi:
 
